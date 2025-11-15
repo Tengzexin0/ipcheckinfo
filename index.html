@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="CloudFlare优选域名汇总 - 提供优质的CloudFlare CDN节点信息">
+    <meta name="keywords" content="CloudFlare,优选域名,CDN,优选IP">
+    <title>CloudFlare优选域名汇总 - CF优选域名</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+<body>
+    <button id="theme-switcher" aria-label="切换主题">
+        <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="5"></circle>
+            <line x1="12" y1="1" x2="12" y2="3"></line>
+            <line x1="12" y1="21" x2="12" y2="23"></line>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+            <line x1="1" y1="12" x2="3" y2="12"></line>
+            <line x1="21" y1="12" x2="23" y2="12"></line>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+        </svg>
+        <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+        </svg>
+    </button>
+    
+    <div class="header">
+        <h1>☁️ CloudFlare 优选域名</h1>
+        <p>提供优质的CloudFlare CDN节点信息，改善访问体验</p>
+    </div>
+
+    <div class="container">
+    <div class="port-info">
+            <h3>🌍 当前网络信息</h3>
+            <div class="network-cards-container">
+                <div class="network-card">
+                    <div class="network-card-title">
+                        <span class="status-indicator" id="status-ipip"></span>
+                        国内测试
+                    </div>
+                    <div class="network-info-content">
+                        <span id="ipip-ip" class="ip-text">加载中...</span>
+                        <div class="location-text">
+                            <span id="ipip-country" class="country-text">-</span>
+                            <span id="ipip-city" class="city-text">-</span>
+                        </div>
+                        <div class="network-tip">· 您访问国内网站所使用的IP</div>
+                    </div>
+                </div>
+
+                <div class="network-card">
+                    <div class="network-card-title">
+                        <span class="status-indicator" id="status-edgeone"></span>
+                        国外测试（漏网之鱼）
+                    </div>
+                    <div class="network-info-content">
+                        <span id="edgeone-ip" class="ip-text">加载中...</span>
+                        <div class="location-text">
+                            <span id="edgeone-country" class="country-text">-</span>
+                            <span id="edgeone-city" class="city-text">-</span>
+                        </div>
+                        <div class="network-tip">· 您访问没有被封的国外网站所使用的IP</div>
+                    </div>
+                </div>
+
+                <div class="network-card">
+                    <div class="network-card-title">
+                        <span class="status-indicator" id="status-cf"></span>
+                        CloudFlare（ProxyIP）
+                    </div>
+                    <div class="network-info-content">
+                        <span id="cf-ip" class="ip-text">加载中...</span>
+                        <div class="location-text">
+                            <span id="cf-country" class="country-text">-</span>
+                            <span id="cf-city" class="city-text">-</span>
+                        </div>
+                        <div class="network-tip">· 您访问CFCDN网站所使用的落地IP</div>
+                    </div>
+                </div>
+
+                <div class="network-card">
+                    <div class="network-card-title">
+                        <span class="status-indicator" id="status-twitter"></span>
+                        墙外测试（推特）
+                    </div>
+                    <div class="network-info-content">
+                        <span id="twitter-ip" class="ip-text">加载中...</span>
+                        <div class="location-text">
+                            <span id="twitter-country" class="country-text">-</span>
+                            <span id="twitter-city" class="city-text">-</span>
+                        </div>
+                        <div class="network-tip">· 您访问Twitter(x.com)等网站所使用的IP</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="notice">
+            <strong>⚠️ 免责声明</strong>
+            本网站的所有信息仅供参考。我们尽力确保信息的准确性和完整性，但对于信息的准确性、完整性和及时性不做任何明示或暗示的保证或声明。用户需自行承担使用本网站信息的风险。同时，禁止使用本站信息进行任何违法违规活动。
+        </div>
+
+        <div class="port-info">
+            <h3>📡 支持端口信息</h3>
+            <p><strong>HTTP支持端口：</strong><code>80</code>, <code>8080</code>, <code>8880</code>, <code>2052</code>, <code>2082</code>, <code>2086</code>, <code>2095</code></p>
+            <p><strong>HTTPS支持端口：</strong><code>443</code>, <code>2053</code>, <code>2083</code>, <code>2087</code>, <code>2096</code>, <code>8443</code></p>
+        </div>
+
+        <section class="section">
+            <h2 class="section-title">🌟 CM优选域名</h2>
+            <div class="domain-cards-grid">
+                <div class="domain-card">
+                    <div class="domain-card-content">
+                        <div class="domain-header">
+                            <button class="copy-domain" data-domain="youxuan.cf.090227.xyz">
+                                <svg class="copy-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg>
+                                *.cf.090227.xyz
+                            </button>
+                            <span class="domain-badge">泛域名</span>
+                            <span class="domain-badge three-network">三网优选</span>
+                        
+                            <a class="test-link" href="https://www.itdog.cn/tcping/youxuan.cf.090227.xyz:443" target="_blank" rel="noopener noreferrer">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <polyline points="16 18 22 12 16 6"></polyline>
+                                    <polyline points="8 6 2 12 8 18"></polyline>
+                                </svg>
+                                TCPing
+                            </a>
+                        </div>
+                        <div class="domain-note">
+                            <strong>💡 泛域名说明：</strong>
+                            <p>以下域名的使用效果都是一样的：</p>
+                            <ul>
+                                <li><code>youxuan.cf.090227.xyz</code></li>
+                                <li><code>优选.cf.090227.xyz</code></li>
+                                <li><code>123.cf.090227.xyz</code></li>
+                            </ul>
+                            <p class="domain-note-p">其效果和直接使用 <code>cf.090227.xyz</code> 是一样的，推荐优先使用自定义前缀的泛域名。</p>
+                        </div>
+                    </div>
+                    <div class="domain-card-image-wrapper">
+                        <img class="domain-image lazy-image" src="./img.png" data-src="https://selected-domain-data-chart-provided-by-vps789.cmliussss.net/13423" alt="延迟统计图">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">🏛️ 官方优选域名</h2>
+            <div class="domain-cards-grid">
+                
+                <div class="domain-card">
+                    <div class="domain-card-content">
+                        <div class="domain-header">
+                            <button class="copy-domain" data-domain="www.visa.cn">
+                                <svg class="copy-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg>
+                                www.visa.cn
+                            </button>
+                            <span class="domain-badge">Visa中国</span>
+                        
+                                    <a class="test-link" href="https://www.itdog.cn/tcping/www.visa.cn:443" target="_blank" rel="noopener noreferrer">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="16 18 22 12 16 6"></polyline>
+                                <polyline points="8 6 2 12 8 18"></polyline>
+                            </svg>
+                            TCPing
+                        </a>
+                        </div>
+                        <div class="domain-note">
+                            <strong>💳 域名介绍：</strong>
+                            <p class="domain-note-p">Visa 中国官方网站域名，<strong class="highlight-text">请注意必须使用 www.visa.cn</strong>（带 www 前缀）。</p>
+                            <p class="domain-note-p"><strong>⚠️ 重要提醒：</strong><code>www.visa.cn</code> 使用 CloudFlare CDN，而 <code>visa.cn</code>（不带 www）使用的是京东云 CDN，两者线路完全不同。请务必使用带 www 的域名。</p>
+                        </div>
+                    </div>
+                    <div class="domain-card-image-wrapper">
+                        <img class="domain-image lazy-image" src="./img.png" data-src="https://selected-domain-data-chart-provided-by-vps789.cmliussss.net/21019" alt="延迟统计图">
+                    </div>
+                </div>
+
+                <div class="domain-card">
+                    <div class="domain-card-content">
+                        <div class="domain-header">
+                            <button class="copy-domain" data-domain="mfa.gov.ua">
+                                <svg class="copy-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg>
+                                mfa.gov.ua
+                            </button>
+                            <span class="domain-badge">乌克兰外交部</span>
+                        
+                                    <a class="test-link" href="https://www.itdog.cn/tcping/mfa.gov.ua:443" target="_blank" rel="noopener noreferrer">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="16 18 22 12 16 6"></polyline>
+                                <polyline points="8 6 2 12 8 18"></polyline>
+                            </svg>
+                            TCPing
+                        </a>
+                        </div>
+                        <div class="domain-note">
+                            <strong>🇺🇦 域名介绍：</strong>
+                            <p class="domain-note-p">乌克兰外交部官方域名，采用 CloudFlare CDN 服务。作为政府官网，域名信誉度高，稳定性好，适合长期使用。</p>
+                        </div>
+                    </div>
+                    <div class="domain-card-image-wrapper">
+                        <img class="domain-image lazy-image" src="./img.png" data-src="https://selected-domain-data-chart-provided-by-vps789.cmliussss.net/25619" alt="延迟统计图">
+                    </div>
+                </div>
+
+                <div class="domain-card">
+                    <div class="domain-card-content">
+                        <div class="domain-header">
+                            <button class="copy-domain" data-domain="www.shopify.com">
+                                <svg class="copy-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg>
+                                www.shopify.com
+                            </button>
+                            <span class="domain-badge">Shopify官方</span>
+                        
+                                    <a class="test-link" href="https://www.itdog.cn/tcping/www.shopify.com:443" target="_blank" rel="noopener noreferrer">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="16 18 22 12 16 6"></polyline>
+                                <polyline points="8 6 2 12 8 18"></polyline>
+                            </svg>
+                            TCPing
+                        </a>
+                        </div>
+                        <div class="domain-note">
+                            <strong>🛍️ 域名介绍：</strong>
+                            <p class="domain-note-p">全球知名电商建站平台 Shopify 官方域名，使用 CloudFlare 企业级 CDN。商业平台域名，线路质量优秀，全球节点覆盖广泛。</p>
+                        </div>
+                    </div>
+                    <div class="domain-card-image-wrapper">
+                        <img class="domain-image lazy-image" src="./img.png" data-src="https://selected-domain-data-chart-provided-by-vps789.cmliussss.net/21423" alt="延迟统计图">
+                    </div>
+                </div>
+
+                <div class="domain-card">
+                    <div class="domain-card-content">
+                        <div class="domain-header">
+                            <button class="copy-domain" data-domain="store.ubi.com">
+                                <svg class="copy-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg>
+                                store.ubi.com
+                            </button>
+                            <span class="domain-badge">Ubisoft</span>
+                        
+                                    <a class="test-link" href="https://www.itdog.cn/tcping/store.ubi.com:443" target="_blank" rel="noopener noreferrer">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="16 18 22 12 16 6"></polyline>
+                                <polyline points="8 6 2 12 8 18"></polyline>
+                            </svg>
+                            TCPing
+                        </a>
+                        </div>
+                        <div class="domain-note">
+                            <strong>🎮 域名介绍：</strong>
+                            <p class="domain-note-p">育碧(Ubisoft)官方商店域名，使用 CloudFlare CDN 服务。作为全球知名游戏厂商的商店域名，线路质量可靠，稳定性好。</p>
+                        </div>
+                    </div>
+                    <div class="domain-card-image-wrapper">
+                        <img class="domain-image lazy-image" src="./img.png" data-src="https://selected-domain-data-chart-provided-by-vps789.cmliussss.net/29391" alt="延迟统计图">
+                    </div>
+                </div>
+
+                <div class="domain-card">
+                    <div class="domain-card-content">
+                        <div class="domain-header">
+                            <button class="copy-domain" data-domain="staticdelivery.nexusmods.com">
+                                <svg class="copy-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg>
+                                staticdelivery.nexusmods.com
+                            </button>
+                            <span class="domain-badge">NexusMods</span>
+                        
+                                    <a class="test-link" href="https://www.itdog.cn/tcping/staticdelivery.nexusmods.com:443" target="_blank" rel="noopener noreferrer">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="16 18 22 12 16 6"></polyline>
+                                <polyline points="8 6 2 12 8 18"></polyline>
+                            </svg>
+                            TCPing
+                        </a>
+                        </div>
+                        <div class="domain-note">
+                            <strong>🎯 域名介绍：</strong>
+                            <p class="domain-note-p">NexusMods 静态资源分发域名，全球最大的游戏MOD社区。采用 CloudFlare CDN，资源分发网络覆盖全球，访问稳定。</p>
+                        </div>
+                    </div>
+                    <div class="domain-card-image-wrapper">
+                        <img class="domain-image lazy-image" src="./img.png" data-src="https://selected-domain-data-chart-provided-by-vps789.cmliussss.net/29392" alt="延迟统计图">
+                    </div>
+                </div>
+            </div>
+            <details class="details">
+                <summary>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="13 17 18 12 13 7"></polyline><polyline points="6 17 11 12 6 7"></polyline></svg>
+                    点击展开「官方优选域名列表」
+                </summary>
+                <pre>www.visa.cn#visa中国优选
+mfa.gov.ua#乌克兰外交部
+www.shopify.com#Shopify官方优选
+store.ubi.com#Ubisoft
+staticdelivery.nexusmods.com#NexusMods
+time.is#官方优选
+icook.hk#官方优选
+icook.tw#官方优选</pre>
+            </details>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">🎯 更多优选域名</h2>
+            <p class="section-subtitle">未备注出处的为未知，来源均为网络收集，仅供参考</p>
+            <div class="domain-cards-grid">
+                <div class="domain-card">
+                    <div class="domain-card-content">
+                        <div class="domain-header">
+                            <button class="copy-domain" data-domain="cf.tencentapp.cn">
+                                <svg class="copy-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg>
+                                *.tencentapp.cn
+                            </button>
+                            <span class="domain-badge">泛域名</span>
+                            <span class="domain-badge three-network">三网优选</span>
+                            <span class="domain-badge">ktff维护</span>
+                        
+                            <a class="test-link" href="https://www.itdog.cn/tcping/cf.tencentapp.cn:443" target="_blank" rel="noopener noreferrer">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <polyline points="16 18 22 12 16 6"></polyline>
+                                    <polyline points="8 6 2 12 8 18"></polyline>
+                                </svg>
+                                TCPing
+                            </a>
+                        </div>
+                        <div class="domain-note">
+                            <strong>🎭 域名介绍：</strong>
+                            <p class="domain-note-p">一个不愿意透露姓名的隐藏大佬维护的优选域名，神秘却可靠，低调但强大。</p>
+                        </div>
+                    </div>
+                    <div class="domain-card-image-wrapper">
+                        <img class="domain-image lazy-image" src="./img.png" data-src="https://selected-domain-data-chart-provided-by-vps789.cmliussss.net/28851" alt="延迟统计图">
+                    </div>
+                </div>
+
+                <div class="domain-card">
+                    <div class="domain-card-content">
+                        <div class="domain-header">
+                            <button class="copy-domain" data-domain="cloudflare-dl.byoip.top">
+                                <svg class="copy-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg>
+                                cloudflare-dl.byoip.top
+                            </button>
+                            <span class="domain-badge three-network">三网优选</span>
+                            <span class="domain-badge">fishcpy维护</span>
+                        
+                            <a class="test-link" href="https://www.itdog.cn/tcping/cloudflare-dl.byoip.top:443" target="_blank" rel="noopener noreferrer">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <polyline points="16 18 22 12 16 6"></polyline>
+                                    <polyline points="8 6 2 12 8 18"></polyline>
+                                </svg>
+                                TCPing
+                            </a>
+                        </div>
+                        <div class="domain-note">
+                            <strong>🚀 域名介绍：</strong>
+                            <p class="domain-note-p"><a href="https://www.byoip.top/">NB 优选服务</a>维护的优选域名，专业团队精心优化，为你带来极速体验。</p>
+                        </div>
+                    </div>
+                    <div class="domain-card-image-wrapper">
+                        <img class="domain-image lazy-image" src="./img.png" data-src="https://selected-domain-data-chart-provided-by-vps789.cmliussss.net/29149" alt="延迟统计图">
+                    </div>
+                </div>
+
+                <div class="domain-card">
+                    <div class="domain-card-content">
+                        <div class="domain-header">
+                            <button class="copy-domain" data-domain="cf.877774.xyz">
+                                <svg class="copy-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg>
+                                cf.877774.xyz
+                            </button>
+                            <span class="domain-badge three-network">三网优选</span>
+                            <span class="domain-badge">秋名山维护</span>
+                        
+                            <a class="test-link" href="https://www.itdog.cn/tcping/cf.877774.xyz:443" target="_blank" rel="noopener noreferrer">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <polyline points="16 18 22 12 16 6"></polyline>
+                                    <polyline points="8 6 2 12 8 18"></polyline>
+                                </svg>
+                                TCPing
+                            </a>
+                        </div>
+                        <div class="domain-note">
+                            <strong>🏁 域名介绍：</strong>
+                            <p class="domain-note-p"><a href="https://cf.877774.xyz/">秋名山</a>维护的优选域名，如同山道飞驰，速度与激情并存，稳定且高效。</p>
+                        </div>
+                    </div>
+                    <div class="domain-card-image-wrapper">
+                        <img class="domain-image lazy-image" src="./img.png" data-src="https://selected-domain-data-chart-provided-by-vps789.cmliussss.net/21842" alt="延迟统计图">
+                    </div>
+                </div>
+
+                <div class="domain-card">
+                    <div class="domain-card-content">
+                        <div class="domain-header">
+                            <button class="copy-domain" data-domain="saas.sin.fan">
+                                <svg class="copy-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg>
+                                saas.sin.fan
+                            </button>
+                            <span class="domain-badge three-network">三网优选</span>
+                            <span class="domain-badge">MIYU维护</span>
+                        
+                            <a class="test-link" href="https://www.itdog.cn/tcping/saas.sin.fan:443" target="_blank" rel="noopener noreferrer">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <polyline points="16 18 22 12 16 6"></polyline>
+                                    <polyline points="8 6 2 12 8 18"></polyline>
+                                </svg>
+                                TCPing
+                            </a>
+                        </div>
+                        <div class="domain-note">
+                            <strong>💎 域名介绍：</strong>
+                            <p class="domain-note-p"><a href="https://saas.sin.fan">MIYU</a>维护的优选域名，精心打磨的优质线路，如钻石般珍贵可靠。</p>
+                        </div>
+                    </div>
+                    <div class="domain-card-image-wrapper">
+                        <img class="domain-image lazy-image" src="./img.png" data-src="https://selected-domain-data-chart-provided-by-vps789.cmliussss.net/26937" alt="延迟统计图">
+                    </div>
+                </div>
+
+                <div class="domain-card">
+                    <div class="domain-card-content">
+                        <div class="domain-header">
+                            <button class="copy-domain" data-domain="bestcf.030101.xyz">
+                                <svg class="copy-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg>
+                                bestcf.030101.xyz
+                            </button>
+                            <span class="domain-badge">Mingyu维护</span>
+                        
+                            <a class="test-link" href="https://www.itdog.cn/tcping/bestcf.030101.xyz:443" target="_blank" rel="noopener noreferrer">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <polyline points="16 18 22 12 16 6"></polyline>
+                                    <polyline points="8 6 2 12 8 18"></polyline>
+                                </svg>
+                                TCPing
+                            </a>
+                        </div>
+                        <div class="domain-note">
+                            <strong>📱 域名介绍：</strong>
+                            <p class="domain-note-p"><a href="https://ipdb.030101.xyz">Mingyu</a>维护的 <b>中国移动</b> 专属优选域名，针对移动网络深度优化，移动用户首选。</p>
+                        </div>
+                    </div>
+                    <div class="domain-card-image-wrapper">
+                        <img class="domain-image lazy-image" src="./img.png" data-src="https://selected-domain-data-chart-provided-by-vps789.cmliussss.net/22254" alt="延迟统计图">
+                    </div>
+                </div>
+
+                <div class="domain-card">
+                    <div class="domain-card-content">
+                        <div class="domain-header">
+                            <button class="copy-domain" data-domain="cf.cloudflare.182682.xyz">
+                                <svg class="copy-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg>
+                                *.cloudflare.182682.xyz
+                            </button>
+                            <span class="domain-badge">泛域名</span>
+                            <span class="domain-badge">wetest.vip维护</span>
+                        
+                            <a class="test-link" href="https://www.itdog.cn/tcping/cf.cloudflare.182682.xyz:443" target="_blank" rel="noopener noreferrer">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <polyline points="16 18 22 12 16 6"></polyline>
+                                    <polyline points="8 6 2 12 8 18"></polyline>
+                                </svg>
+                                TCPing
+                            </a>
+                        </div>
+                        <div class="domain-note">
+                            <strong>🔬 域名介绍：</strong>
+                            <p class="domain-note-p"><a href="https://www.wetest.vip/">WeTest.Vip</a>维护的优选域名，经过严格测试验证，性能稳定可靠。</p>
+                        </div>
+                    </div>
+                    <div class="domain-card-image-wrapper">
+                        <img class="domain-image lazy-image" src="./img.png" data-src="https://selected-domain-data-chart-provided-by-vps789.cmliussss.net/14829" alt="延迟统计图">
+                    </div>
+                </div>
+            </div>
+            <details class="details">
+                <summary>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="13 17 18 12 13 7"></polyline><polyline points="6 17 11 12 6 7"></polyline></svg>
+                    点击展开「更多优选域名列表」
+                </summary>
+                <pre>bestcf.030101.xyz#Mingyu维护
+cdn.2020111.xyz
+cdns.doon.eu.org
+cf.0sm.com
+cf.877771.xyz
+cf.877774.xyz#秋名山维护
+cf.900501.xyz
+cfip.1323123.xyz
+cfip.cfcdn.vip
+cfip.xxxxxxxx.tk#OTC维护
+cloudflare.182682.xyz#WeTest.Vip维护
+cloudflare-dl.byoip.top
+cloudflare-ip.mofashi.ltd
+fn.130519.xyz
+freeyx.cloudflare88.eu.org
+nrt.xxxxxxxx.nyc.mn
+nrtcfdns.zone.id
+saas.sin.fan
+tencentapp.cn#ktff维护
+xn--b6gac.eu.org
+777.ai7777777.xyz</pre>
+            </details>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">🔌 第三方API</h2>
+            <div class="api-section">
+                <h3>优选官方IP的API</h3>
+                <ul class="api-list">
+                    <li>https://cf.090227.xyz/ct</li>
+                    <li>https://cf.090227.xyz/cu</li>
+                    <li>https://cf.090227.xyz/cmcc</li>
+                    <li>https://cf.090227.xyz/CloudFlareYes</li>
+                    <li>https://cf.090227.xyz/ip.164746.xyz</li>
+                    <li>https://ipdb.api.030101.xyz/?type=bestcf&country=true</li>
+                </ul>
+            </div>
+
+            <div class="api-section">
+                <h3>优选反代IP的API</h3>
+                <ul class="api-list">
+                    <li>https://ipdb.api.030101.xyz/?type=bestproxy&country=true</li>
+                </ul>
+            </div>
+        </section>
+
+        <div class="resources-section">
+            <h3>🔗 更多优选内容</h3>
+            <div class="resources-list">
+                <a class="resource-link" href="https://vps789.com/cfip/?remarks=domain" target="_blank" rel="noopener noreferrer">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.21 15.89A10 10 0 1 1 8 2.83"></path><path d="M22 12A10 10 0 0 0 12 2v10z"></path></svg>
+                    vps789.com
+                </a>
+                <a class="resource-link" href="https://ipdb.api.030101.xyz" target="_blank" rel="noopener noreferrer">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V7"></path><path d="M12 12L4 7"></path><path d="M20 7l-8 5"></path><path d="M12 2v10"></path></svg>
+                    ipdb.api.030101.xyz
+                </a>
+                <a class="resource-link" href="https://www.wetest.vip/page/cloudflare/address_v4.html" target="_blank" rel="noopener noreferrer">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"></path></svg>
+                    wetest.vip
+                </a>
+                <a class="resource-link" href="https://stock.hostmonit.com/CloudFlareYes" target="_blank" rel="noopener noreferrer">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20V10"></path><path d="M18 20V4"></path><path d="M6 20v-4"></path></svg>
+                    CloudFlareYes
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>© 2025 CloudFlare优选域名汇总 | 今日访问人数: <span id="visit-count">···</span> | 本站内容仅供参考，提供维护: <a href='https://t.me/CMLiussss'>TG:CMLiussss</a> </p>
+        <p class="footer-note">由于众所周知的原因,CloudFlare在中国大陆地区没有CDN节点,本站收集优选信息旨在改善访问体验</p>
+    </div>
+
+    <script src="script.js"></script>
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js/vcd15cbe7772f49c399c6a5babf22c1241717689176015" integrity="sha512-ZpsOmlRQV6y907TI0dKBHq9Md29nnaEIPlkf84rnaERnq6zvWvPUqr2ft8M1aS28oN72PdrCzSjY4U6VaAw1EQ==" data-cf-beacon='{"version":"2024.11.0","token":"09ad8d5b2f78480ab3a895ebec0d56c1","r":1,"server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
+</body>
+</html>
