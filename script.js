@@ -379,7 +379,7 @@ document.addEventListener('DOMContentLoaded', () => {
   async function fetchVisitCount() {
     try {
       const response = await fetch(
-        'https://tongji.090227.xyz/?id=cf.090227.xyz'
+        'https://tongji.090227.xyz/?id=ipcheckinfo.zone.id'
       );
       const data = await response.json();
 
