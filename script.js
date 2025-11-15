@@ -5,6 +5,8 @@
  */
 document.addEventListener('DOMContentLoaded', () => {
   // --- 1. UI & 工具函数 ---
+  // [copyDomain, fallbackCopy, showToast, setStatus... 等函数保持不变，此处省略]
+  // ...
 
   /**
    * 复制域名到剪贴板
@@ -149,29 +151,15 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   /**
-   * 初始化主题切换
+   * (已修改) 初始化主题功能
+   * 仅负责处理“点击切换”和“系统主题变更”
+   * 初始主题设置已移至 index.html 的 <head> 中
    */
   function initTheme() {
     const themeSwitcher = document.getElementById('theme-switcher');
     if (!themeSwitcher) return;
 
-    // 获取系统主题偏好
-    const getSystemTheme = () => {
-      if (
-        window.matchMedia &&
-        window.matchMedia('(prefers-color-scheme: dark)').matches
-      ) {
-        return 'dark';
-      }
-      return 'light';
-    };
-
-    // 设置初始主题：优先使用本地存储，如果没有则跟随系统
-    const savedTheme = localStorage.getItem('theme');
-    const initialTheme = savedTheme || getSystemTheme();
-    document.documentElement.setAttribute('data-theme', initialTheme);
-
-    // 监听系统主题变化（仅当用户未手动设置时）
+    // 1. 监听系统主题变化（仅当用户未手动设置时）
     if (window.matchMedia) {
       window
         .matchMedia('(prefers-color-scheme: dark)')
@@ -184,7 +172,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // 主题切换事件
+    // 2. 主题切换点击事件
     themeSwitcher.addEventListener('click', () => {
       let theme = document.documentElement.getAttribute('data-theme');
       const newTheme = theme === 'dark' ? 'light' : 'dark';
@@ -195,6 +183,8 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // --- 3. 网络信息获取 ---
+  // [fetchIpipData, fetchEdgeOneData, ... 等函数保持不变，此处省略]
+  // ...
 
   /**
    * 获取国内测试数据 (遍历多个 API: speedtest.cn > ipipv.com > ipip.net)
@@ -425,6 +415,8 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // --- 4. IP 详情弹窗 (Modal) 功能 ---
+  // [所有 IP 弹窗相关函数保持不变，此处省略]
+  // ...
 
   /**
    * 优化：标记 IP 为可点击
@@ -1055,6 +1047,8 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // --- 5. 统一事件监听 (优化) ---
+  // [initEventListeners 函数保持不变，此处省略]
+  // ...
 
   /**
    * 初始化所有事件监听器
@@ -1136,7 +1130,7 @@ document.addEventListener('DOMContentLoaded', () => {
    * 启动应用
    */
   function initApp() {
-    initTheme();
+    initTheme(); // (现在只负责绑定事件)
     initLazyLoading();
     loadNetworkInfo();
     fetchVisitCount();
